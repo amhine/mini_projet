@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('suites', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('chambre_id')->constrained('chambres')->onDelete('cascade');
+            $table->decimal('surface', 5, 2)->nullable();
+            $table->boolean('balcon')->default(false);
+            $table->json('services_premium')->nullable(); 
             $table->timestamps();
         });
     }

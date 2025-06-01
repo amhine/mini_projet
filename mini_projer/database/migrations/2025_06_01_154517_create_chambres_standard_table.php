@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('chambres_standard', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('chambre_id')->constrained('chambres')->onDelete('cascade');
+            $table->json('services_inclus')->nullable(); 
             $table->timestamps();
         });
     }

@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chambres', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+       Schema::create('chambres', function (Blueprint $table) {
+                $table->id();
+                $table->integer('numero')->unique();
+                $table->decimal('tarif_journalier', 10, 2);
+                $table->integer('capacite');
+                $table->enum('type', ['standard', 'suite']); 
+                $table->timestamps();
         });
     }
 
